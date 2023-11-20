@@ -1,7 +1,7 @@
-package com.example.mealserve.domain.customer.controller;
+package com.example.mealserve.domain.account.controller;
 
-import com.example.mealserve.domain.customer.dto.AccountJoinRequestDto;
-import com.example.mealserve.domain.customer.service.AccountService;
+import com.example.mealserve.domain.account.dto.AccountJoinRequestDto;
+import com.example.mealserve.domain.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

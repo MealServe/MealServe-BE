@@ -1,7 +1,7 @@
 package com.example.mealserve.security;
 
-import com.example.mealserve.domain.customer.entity.Account;
-import com.example.mealserve.domain.customer.repository.AccountRepository;
+import com.example.mealserve.domain.account.entity.Account;
+import com.example.mealserve.domain.account.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

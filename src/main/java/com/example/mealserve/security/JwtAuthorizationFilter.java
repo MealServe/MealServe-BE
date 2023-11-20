@@ -1,6 +1,7 @@
 package com.example.mealserve.security;
 
-import com.example.mealserve.domain.customer.repository.AccountRepository;
+
+import com.example.mealserve.domain.account.repository.AccountRepository;
 import com.example.mealserve.exception.CustomException;
 import com.example.mealserve.exception.ErrorCode;
 import io.jsonwebtoken.Claims;

@@ -1,9 +1,8 @@
 package com.example.mealserve.security;
 
 
-import com.example.mealserve.domain.customer.dto.AccountLoginRequestDto;
-import com.example.mealserve.domain.customer.entity.RoleTypeEnum;
-import com.example.mealserve.security.UserDetailsImpl;
+import com.example.mealserve.domain.account.dto.AccountLoginRequestDto;
+import com.example.mealserve.domain.account.entity.RoleTypeEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;

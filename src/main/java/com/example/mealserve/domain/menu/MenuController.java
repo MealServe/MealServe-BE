@@ -29,7 +29,7 @@ public class MenuController {
     private final MenuService menuService;
 
     @PostMapping("")
-    @PreAuthorize("hasAnyRole('OWNER')")
+    @PreAuthorize("hasAnyRole('OWNE111R')")
     public ResponseEntity<MenuResponseDto> addMenu(@Valid @RequestPart("menu") MenuRequestDto menuRequestDto,
                                                    @RequestPart("imageFile") MultipartFile image,
                                                    @AuthenticationPrincipal UserDetailsImpl userDetails,

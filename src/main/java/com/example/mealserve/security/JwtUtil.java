@@ -1,6 +1,7 @@
 package com.example.mealserve.security;
 
-import com.example.mealserve.domain.customer.entity.RoleTypeEnum;
+
+import com.example.mealserve.domain.account.entity.RoleTypeEnum;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;

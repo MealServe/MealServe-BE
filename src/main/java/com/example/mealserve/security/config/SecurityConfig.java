@@ -1,6 +1,6 @@
 package com.example.mealserve.security.config;
 
-import com.example.mealserve.domain.customer.repository.AccountRepository;
+import com.example.mealserve.domain.account.repository.AccountRepository;
 import com.example.mealserve.security.JwtAuthenticationFilter;
 import com.example.mealserve.security.JwtAuthorizationFilter;
 import com.example.mealserve.security.JwtUtil;

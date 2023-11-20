@@ -1,8 +1,8 @@
-package com.example.mealserve.domain.customer.service;
+package com.example.mealserve.domain.account.service;
 
-import com.example.mealserve.domain.customer.dto.AccountJoinRequestDto;
-import com.example.mealserve.domain.customer.entity.Account;
-import com.example.mealserve.domain.customer.repository.AccountRepository;
+import com.example.mealserve.domain.account.dto.AccountJoinRequestDto;
+import com.example.mealserve.domain.account.entity.Account;
+import com.example.mealserve.domain.account.repository.AccountRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

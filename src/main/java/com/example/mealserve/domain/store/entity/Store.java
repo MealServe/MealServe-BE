@@ -1,9 +1,8 @@
 package com.example.mealserve.domain.store.entity;
 
-import com.example.mealserve.domain.customer.entity.Account;
+import com.example.mealserve.domain.account.entity.Account;
 import com.example.mealserve.domain.menu.entity.Menu;
 import com.example.mealserve.domain.store.dto.StoreRequestDto;
-import com.example.mealserve.domain.store.dto.StoreResponseDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -37,6 +36,7 @@ public class Store {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_id")
     private Menu menu;
+
 
     @Builder
     private Store(String name, String address, String tel) {

@@ -1,4 +1,4 @@
-package com.example.mealserve.domain.customer.entity;
+package com.example.mealserve.domain.account.entity;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,8 +14,8 @@ public enum RoleTypeEnum {
     }
 
     public static class Authority {
-        public static final String CUSTOMER = "ROLE_Customer";
-        public static final String OWNER = "ROLE_Owner";
+        public static final String CUSTOMER = "ROLE_CUSTOMER";
+        public static final String OWNER = "ROLE_OWNER";
 
     }
 }

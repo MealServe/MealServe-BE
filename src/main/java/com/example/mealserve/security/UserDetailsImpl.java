@@ -1,6 +1,6 @@
 package com.example.mealserve.security;
 
-import com.example.mealserve.domain.customer.entity.Account;
+import com.example.mealserve.domain.account.entity.Account;
 import com.example.mealserve.domain.store.entity.Store;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

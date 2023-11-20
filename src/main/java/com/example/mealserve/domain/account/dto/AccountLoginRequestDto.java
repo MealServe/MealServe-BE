@@ -1,4 +1,4 @@
-package com.example.mealserve.domain.customer.dto;
+package com.example.mealserve.domain.account.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

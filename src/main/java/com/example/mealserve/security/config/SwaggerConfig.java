@@ -69,4 +69,12 @@ public class SwaggerConfig {
                 .pathsToMatch("/api/auth/**")
                 .build();
     }
+
+    @Bean
+    public GroupedOpenApi menuApi() {
+        return GroupedOpenApi.builder()
+                .group("menu-orders")
+                .pathsToMatch("/api/stores/**")
+                .build();
+    }
 }

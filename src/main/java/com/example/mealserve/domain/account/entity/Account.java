@@ -1,4 +1,4 @@
-package com.example.mealserve.domain.customer.entity;
+package com.example.mealserve.domain.account.entity;
 
 import com.example.mealserve.domain.store.entity.Store;
 import jakarta.persistence.*;

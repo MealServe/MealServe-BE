@@ -1,6 +1,6 @@
 package com.example.mealserve.domain.order;
 
-import com.example.mealserve.domain.customer.entity.Account;
+import com.example.mealserve.domain.account.entity.Account;
 import com.example.mealserve.domain.menu.MenuRepository;
 import com.example.mealserve.domain.menu.entity.Menu;
 import com.example.mealserve.domain.order.dto.OrderDto;

@@ -1,6 +1,6 @@
-package com.example.mealserve.domain.customer.repository;
+package com.example.mealserve.domain.account.repository;
 
-import com.example.mealserve.domain.customer.entity.Account;
+import com.example.mealserve.domain.account.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

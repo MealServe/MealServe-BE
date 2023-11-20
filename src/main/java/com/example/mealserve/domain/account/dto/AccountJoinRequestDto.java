@@ -1,7 +1,7 @@
-package com.example.mealserve.domain.customer.dto;
+package com.example.mealserve.domain.account.dto;
 
-import com.example.mealserve.domain.customer.entity.Account;
-import com.example.mealserve.domain.customer.entity.RoleTypeEnum;
+import com.example.mealserve.domain.account.entity.Account;
+import com.example.mealserve.domain.account.entity.RoleTypeEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

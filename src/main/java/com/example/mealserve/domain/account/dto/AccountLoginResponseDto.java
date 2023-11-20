@@ -1,6 +1,6 @@
-package com.example.mealserve.domain.customer.dto;
+package com.example.mealserve.domain.account.dto;
 
-import com.example.mealserve.domain.customer.entity.RoleTypeEnum;
+import com.example.mealserve.domain.account.entity.RoleTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
