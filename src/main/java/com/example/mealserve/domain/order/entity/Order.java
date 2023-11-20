@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@Builder
 @NoArgsConstructor
 @Table(name = "`order`")
 public class Order extends TimeStamp {
