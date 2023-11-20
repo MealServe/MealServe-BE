@@ -1,6 +1,5 @@
 package com.example.mealserve.security.config;
 
-import com.example.mealserve.domain.account.repository.AccountRepository;
 import com.example.mealserve.security.JwtAuthenticationFilter;
 import com.example.mealserve.security.JwtAuthorizationFilter;
 import com.example.mealserve.security.JwtUtil;
@@ -26,7 +25,6 @@ public class SecurityConfig {
 
     private final JwtUtil jwtUtil;
     private final UserDetailsServiceImpl userDetailsService;
-    private final AccountRepository accountRepository;
     private final AuthenticationConfiguration authenticationConfiguration;
 
     @Bean
@@ -43,7 +41,7 @@ public class SecurityConfig {
 
     @Bean
     public JwtAuthorizationFilter jwtAuthorizationFilter() {
-        return new JwtAuthorizationFilter(jwtUtil, userDetailsService, accountRepository);
+        return new JwtAuthorizationFilter(jwtUtil, userDetailsService);
     }
 
     @Bean

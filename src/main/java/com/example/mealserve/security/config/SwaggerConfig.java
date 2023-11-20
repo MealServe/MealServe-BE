@@ -61,7 +61,6 @@ public class SwaggerConfig {
                                 )));
     }
 
-    // 로그인 컨트롤러
     @Bean
     public GroupedOpenApi userApi() {
         return GroupedOpenApi.builder()

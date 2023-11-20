@@ -26,7 +26,7 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     @Override
-    public String getUsername() { // 이메일 반환
+    public String getUsername() {
         return account.getEmail();
     }
 
