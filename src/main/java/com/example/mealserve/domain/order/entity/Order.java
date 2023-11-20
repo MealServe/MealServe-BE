@@ -1,7 +1,7 @@
 package com.example.mealserve.domain.order.entity;
 
-import com.example.mealserve.domain.customer.entity.Account;
 import com.example.mealserve.domain.menu.entity.Menu;
+import com.example.mealserve.domain.account.entity.Account;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor
 @Table(name = "`order`")
 public class Order extends TimeStamp {
@@ -38,7 +39,7 @@ public class Order extends TimeStamp {
         this.status = DeliverStatus.PREPARE;
     }
 
-    public static Order from(Account account, Menu menu, Integer quantity) {
+    public static Order of(Account account, Menu menu, Integer quantity) {
         return Order.builder()
                 .account(account)
                 .menu(menu)
@@ -46,7 +47,7 @@ public class Order extends TimeStamp {
                 .build();
     }
 
-    public void complete(Order order) {
+    public void complete() {
         this.status = DeliverStatus.COMPLETE;
     }
 }

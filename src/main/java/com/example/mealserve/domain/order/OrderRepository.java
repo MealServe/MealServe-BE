@@ -13,7 +13,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("select o from Order o " +
             "left join fetch o.account " +
             "left join fetch o.menu " +
-            "where o.account.store.id = :storeId")
+            "where o.menu.store.id = :storeId")
     List<Order> findAllByStoreId(Long storeId);
 
+    List<Order> findAllByAccountId(Long accountId);
 }

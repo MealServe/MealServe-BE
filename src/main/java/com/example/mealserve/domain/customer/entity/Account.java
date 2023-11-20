@@ -40,4 +40,8 @@ public class Account {
         this.point = role == RoleTypeEnum.CUSTOMER ? 1000000L : 0L;
 
     }
+
+    public void earnPoint(Integer point) {
+        this.point += point;
+    }
 }

@@ -1,6 +1,5 @@
 package com.example.mealserve.domain.order.dto;
 
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

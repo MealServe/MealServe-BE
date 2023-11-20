@@ -19,7 +19,7 @@ public class OrderResponseDto {
         this.totalPrice = totalPrice;
     }
 
-    public static OrderResponseDto from(List<OrderDto> orders, int totalPrice) {
+    public static OrderResponseDto of(List<OrderDto> orders, int totalPrice) {
         return OrderResponseDto.builder()
                 .orders(orders)
                 .totalPrice(totalPrice)

@@ -1,6 +1,6 @@
 package com.example.mealserve.domain.order.dto;
 
-import com.example.mealserve.domain.customer.entity.Account;
+import com.example.mealserve.domain.account.entity.Account;
 import com.example.mealserve.domain.order.entity.DeliverStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
@@ -23,7 +23,12 @@ public class OrderListResponseDto {
     private final DeliverStatus status;
 
     @Builder
-    private OrderListResponseDto(Long customerId, String address, List<OrderDto> menus, LocalDateTime createdAt, int totalPrice, DeliverStatus status) {
+    private OrderListResponseDto(Long customerId,
+                                 String address,
+                                 List<OrderDto> menus,
+                                 LocalDateTime createdAt,
+                                 int totalPrice,
+                                 DeliverStatus status) {
         this.customerId = customerId;
         this.address = address;
         this.menus = menus;
@@ -32,7 +37,9 @@ public class OrderListResponseDto {
         this.status = status;
     }
 
-    public static OrderListResponseDto from(Account account, List<OrderDto> menus, int totalPrice) {
+    public static OrderListResponseDto of(Account account,
+                                          List<OrderDto> menus,
+                                          int totalPrice) {
         return OrderListResponseDto.builder()
                 .customerId(account.getId())
                 .address(account.getAddress())
