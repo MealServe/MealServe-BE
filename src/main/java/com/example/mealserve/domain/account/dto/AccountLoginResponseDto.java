@@ -8,5 +8,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class AccountLoginResponseDto {
 
+    private Long id;
+    private String email;
     private RoleTypeEnum role;
 }

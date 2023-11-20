@@ -17,6 +17,7 @@ public class AccountService {
 
     @Transactional
     public void registerNewAccount(AccountJoinRequestDto requestDto) {
+
         // 이메일 중복 확인
         String email = requestDto.getEmail();
         if (accountRepository.existsByEmail(requestDto.getEmail())) {
@@ -31,7 +32,7 @@ public class AccountService {
                 .password(password)
                 .phone(requestDto.getPhone())
                 .address(requestDto.getAddress())
-                .role(requestDto.getRole())
+                .isOwner(requestDto.isOwner())
                 .build();
 
         // 계정 저장

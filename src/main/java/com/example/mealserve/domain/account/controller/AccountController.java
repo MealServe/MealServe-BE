@@ -3,6 +3,7 @@ package com.example.mealserve.domain.account.controller;
 import com.example.mealserve.domain.account.dto.AccountJoinRequestDto;
 import com.example.mealserve.domain.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class AccountController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerAccount(@RequestBody AccountJoinRequestDto requestDto) {
         accountService.registerNewAccount(requestDto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 }

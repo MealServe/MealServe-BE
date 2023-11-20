@@ -26,18 +26,23 @@ public class Account {
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private Store store;
 
+    @Builder.Default
+    private boolean isOwner = false;
+
     @Builder
     public Account(String email,
                    String password,
                    String phone,
                    String address,
-                   RoleTypeEnum role) {
+                   RoleTypeEnum role,
+                   boolean isOwner) {
         this.email = email;
         this.password = password;
         this.phone = phone;
         this.address = address;
         this.role = role;
+        this.isOwner = isOwner;
         this.point = role == RoleTypeEnum.CUSTOMER ? 1000000L : 0L;
-
     }
+
 }

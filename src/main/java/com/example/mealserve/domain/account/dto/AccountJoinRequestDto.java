@@ -1,7 +1,6 @@
 package com.example.mealserve.domain.account.dto;
 
 import com.example.mealserve.domain.account.entity.Account;
-import com.example.mealserve.domain.account.entity.RoleTypeEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -32,7 +31,8 @@ public class AccountJoinRequestDto {
     @Pattern(regexp = "^[0-9]{10,11}$", message = "전화번호는 10~11자리의 숫자이어야 합니다")
     private String phone;
 
-    private RoleTypeEnum role;
+    private boolean isOwner;
+
 
     @Builder
     public Account toEntity() {
@@ -41,7 +41,7 @@ public class AccountJoinRequestDto {
                 .password(password)
                 .phone(phone)
                 .address(address)
-                .role(role)
+                .isOwner(isOwner)
                 .build();
     }
 }
