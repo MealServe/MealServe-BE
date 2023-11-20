@@ -26,7 +26,6 @@ public class Account {
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private Store store;
 
-    @Builder.Default
     private boolean isOwner = false;
 
     @Builder
