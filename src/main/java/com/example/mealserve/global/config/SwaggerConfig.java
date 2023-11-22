@@ -1,5 +1,8 @@
 package com.example.mealserve.global.config;
 
+import com.example.mealserve.global.security.jwt.JwtUtil;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
@@ -20,28 +23,34 @@ import org.springframework.context.annotation.Profile;
 
 import java.util.Collections;
 
+@OpenAPIDefinition(
+        info = @Info(
+                title = " 항해의 민족 API 명세서",
+                description = "5조를 위한 API 명세서",
+                version = "v1"
+        )
+)
 @Configuration
 public class SwaggerConfig {
 
-    private static final String SECURITY_SCHEME_NAME = "JWTAuth";
+    private static final String BEARER_TOKEN_PREFIX = "Bearer";
 
     @Bean
-    @Profile("!Prod") // 운영 환경에서 Swagger 비활성화
-    public OpenAPI customOpenAPI() {
-        return new OpenAPI()
-            .components(new Components().addSecuritySchemes(SECURITY_SCHEME_NAME,
-                new SecurityScheme()
-                    .name(SECURITY_SCHEME_NAME)
-                    .type(SecurityScheme.Type.APIKEY)
-                    .in(SecurityScheme.In.HEADER)
-                    .name("Authorization")))
-            .addSecurityItem(new SecurityRequirement().addList(SECURITY_SCHEME_NAME))
+    @Profile("!Prod") // 운영 환경에는 Swagger를 비활성화하기 위해 추가
+    public OpenAPI openAPI() {
+        String jwtSchemeName = JwtUtil.AUTHORIZATION_HEADER;
+        SecurityRequirement securityRequirement = new SecurityRequirement().addList(jwtSchemeName);
+        Components components = new Components()
+                .addSecuritySchemes(jwtSchemeName, new SecurityScheme()
+                        .name(jwtSchemeName)
+                        .type(SecurityScheme.Type.HTTP)
+                        .scheme(BEARER_TOKEN_PREFIX)
+                        .bearerFormat(JwtUtil.BEARER_PREFIX));
 
-            .schema("AccountLoginRequestDto", new Schema<>()
-                .type("object")
-                .addProperty("email", new StringSchema().example("user@example.com"))
-                .addProperty("password", new StringSchema().example("password123!"))
-            )
+        // Swagger UI 접속 후, 딱 한 번만 accessToken을 입력해주면 모든 API에 토큰 인증 작업이 적용
+        return new OpenAPI()
+                .addSecurityItem(securityRequirement)
+                .components(components)
 
             // 로그인 수동경로 지정
             .path("/api/auth/login", new PathItem()
@@ -53,7 +62,7 @@ public class SwaggerConfig {
                     .requestBody(new RequestBody()
                         .content(new Content()
                             .addMediaType(org.springframework.http.MediaType.APPLICATION_JSON_VALUE,
-                                new MediaType().schema(new Schema<>().$ref("#/components/schemas/AccountLoginRequestDto"))))
+                                new MediaType().schema(new Schema<>().$ref("#/components/schemas/LoginRequestDto"))))
                     )
                     .responses(new ApiResponses()
                         .addApiResponse("200", new ApiResponse().description("로그인 성공"))

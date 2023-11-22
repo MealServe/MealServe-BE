@@ -28,6 +28,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
+    private static final String[] AUTH_WHITELIST = {
+            "/graphiql", "/graphql",
+            "/swagger-ui/**", "/api-docs", "/swagger-ui-custom.html",
+            "/v3/api-docs/**", "/api-docs/**", "/swagger-ui.html"
+    };
+
     private final JwtUtil jwtUtil;
     private final UserDetailsServiceImpl userDetailsService;
     private final AuthenticationConfiguration authenticationConfiguration;
@@ -66,8 +72,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests((authorizeHttpRequests) ->
             authorizeHttpRequests
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/swagger-resources/**", "/webjars/**", "/v3/api-docs/**",
-                    "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                .requestMatchers(AUTH_WHITELIST).permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated());
 
