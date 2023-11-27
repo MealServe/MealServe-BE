@@ -38,7 +38,8 @@ public enum ErrorCode {
     ACCESS_DENIED(HttpStatus.FORBIDDEN.value(), "접근 권한이 없습니다."),
     INSUFFICIENT_POINT(HttpStatus.BAD_REQUEST.value(), "포인트가 부족합니다."),
     ORDER_ALREADY_COMPLETED(HttpStatus.BAD_REQUEST.value(), "이미 완료된 주문입니다."),
-    UNEXPECTED_ERROR(443, "예상치 못한 오류가 발생했습니다."),;
+    STORE_NOT_MATCH(HttpStatus.NOT_FOUND.value(), "해당 키워드로 검색한 업소가 없습니다."),
+    UNEXPECTED_ERROR(443, "예상치 못한 오류가 발생했습니다.");
 
     private final int httpStatus;
     private final String message;

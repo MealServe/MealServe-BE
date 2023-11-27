@@ -1,6 +1,7 @@
 package com.example.mealserve.domain.store.dto;
 
 import com.example.mealserve.domain.menu.dto.MenuResponseDto;
+import com.example.mealserve.domain.store.document.StoreDocument;
 import com.example.mealserve.domain.store.entity.Store;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
@@ -43,5 +44,14 @@ public class StoreResponseDto {
             .address(store.getAddress())
             .tel(store.getTel())
             .build();
+    }
+
+    public static StoreResponseDto fromEsDocument(StoreDocument storeDocument) {
+        return StoreResponseDto.builder()
+                .id(storeDocument.getId())
+                .name(storeDocument.getName())
+                .address(storeDocument.getAddress())
+                .tel(storeDocument.getTel())
+                .build();
     }
 }

@@ -69,9 +69,24 @@ public class StoreService {
         return stores.map(StoreResponseDto::from);
     }
 
+    @Transactional(readOnly = true)
+    public List<StoreResponseDto> getStoreByKeyword(String keyword) {
+        List<Store> storeList = storeRepository.findAllByNameContaining(keyword);
+        checkIfStoresExist(storeList);
+        return storeList.stream()
+                .map(StoreResponseDto::from)
+                .toList();
+    }
+
     private void checkIfStoreExist(StoreRequestDto storeRequestDto) {
         if (storeRepository.existsByName(storeRequestDto.getName())) {
             throw new CustomException(ErrorCode.STORE_ALREADY_EXISTS);
+        }
+    }
+
+    private void checkIfStoresExist(List<Store> storeList) {
+        if (storeList.isEmpty()) {
+            throw new CustomException(ErrorCode.STORE_NOT_MATCH);
         }
     }
 
