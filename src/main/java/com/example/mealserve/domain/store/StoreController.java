@@ -1,25 +1,19 @@
 package com.example.mealserve.domain.store;
 
 import com.example.mealserve.domain.account.entity.Account;
+import com.example.mealserve.domain.store.dto.RedisResponseDto;
 import com.example.mealserve.domain.store.dto.StoreRequestDto;
 import com.example.mealserve.domain.store.dto.StoreResponseDto;
 import com.example.mealserve.global.tool.LoginAccount;
-import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,6 +21,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class StoreController {
 
     private final StoreService storeService;
+//    private final StoreSearchService storeSearchService;
 
     @PostMapping
     public ResponseEntity<StoreResponseDto> registerStore(@RequestBody @Validated StoreRequestDto storeRequestDto,
@@ -46,15 +41,22 @@ public class StoreController {
     public ResponseEntity<Void> deleteStore(@PathVariable Long storeId) {
         storeService.deleteStore(storeId);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
-            .path("/")
-            .build()
-            .toUri();
+                .path("/")
+                .build()
+                .toUri();
         return ResponseEntity.status(HttpStatus.OK).location(uri).build();
     }
 
     @GetMapping("/{storeId}")
     public ResponseEntity<StoreResponseDto> getStore(@PathVariable Long storeId) {
         StoreResponseDto responseBody = storeService.getStore(storeId);
+        return ResponseEntity.status(HttpStatus.OK).body(responseBody);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<RedisResponseDto> getStoresByKeyword(@RequestParam("keyword") String keyword) {
+//        List<StoreResponseDto> responseBody = storeSearchService.getStoreDocumentByKeyword(keyword);
+        RedisResponseDto responseBody = storeService.getStoreByKeyword(keyword);
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
 

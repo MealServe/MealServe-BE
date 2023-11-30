@@ -39,7 +39,6 @@ public class Menu {
         this.price = price;
         this.image = image;
         this.store = store;
-        store.getMenuList().add(this);
     }
 
     public static Menu of(MenuRequestDto menuRequestDto, String image, Store store) {
